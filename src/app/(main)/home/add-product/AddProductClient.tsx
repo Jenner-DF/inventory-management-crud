@@ -1,14 +1,5 @@
 "use client";
 import CreateProductForm from "@/components/custom/CreateProductForm";
-import { Button } from "@/components/ui/button";
-import {
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  Dialog,
-} from "@/components/ui/dialog";
 
 export default function AddProductClient({ userId }: { userId: string }) {
   return (

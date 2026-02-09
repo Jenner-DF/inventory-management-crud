@@ -1,12 +1,9 @@
-import { getTotalProducts } from "@/lib/actions/actions";
-import DashboardClient from "./DashboardClient";
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import {
   Card,
   CardAction,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

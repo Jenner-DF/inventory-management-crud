@@ -1,13 +1,3 @@
-import CreateProductForm from "@/components/custom/CreateProductForm";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { getCurrentUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import AddProductClient from "./AddProductClient";
