@@ -34,7 +34,7 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { DropdownMenu } from "@/components/ui/dropdown-menu";
 import DeleteAllSelectedProducts from "@/components/custom/DeleteAllSelectedProducts";
-import { ProductFormValues } from "@/lib/types/product";
+import { ProductFormValues } from "@/lib/schema/product.schema";
 
 interface DataTableProps<TData> {
   columns: ColumnDef<TData>[];

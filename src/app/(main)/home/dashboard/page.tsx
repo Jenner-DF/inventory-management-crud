@@ -17,11 +17,9 @@ export default async function DashboardPage() {
   const userId = user.id;
   // const totalProducts = await getTotalProducts(userId);
 
-  const [totalProducts, lowstock, allProducts] = await Promise.all([
+  const [totalProducts, allProducts] = await Promise.all([
     prisma.product.count({ where: { userId } }),
-    prisma.product.count({
-      where: { isLowStock: true, userId },
-    }),
+
     prisma.product.findMany({
       where: { userId },
       select: {
@@ -32,6 +30,11 @@ export default async function DashboardPage() {
       },
     }),
   ]);
+  const lowstock = allProducts.reduce(
+    (count, product) =>
+      product.quantity < (product.lowStockThreshold ?? 0) ? count + 1 : count,
+    0,
+  );
   // const totalProducts = await prisma.product.count();
 
   // const lowstock = await prisma.product.count({
@@ -168,26 +171,28 @@ export default async function DashboardPage() {
               </thead>
               <tbody>
                 {recents.map((product) => {
-                  const stockLevel =
-                    product.quantity === 0
-                      ? "Out of Stock"
-                      : product.isLowStock
-                        ? "Low Stock"
-                        : "In Stock";
-                  const color =
+                  const lowThreshold = product.lowStockThreshold ?? 0;
+
+                  let stockLevel = "In Stock";
+                  if (product.quantity === 0) {
+                    stockLevel = "Out of Stock";
+                  } else if (product.quantity < lowThreshold) {
+                    stockLevel = "Low Stock";
+                  }
+
+                  const colorClass =
                     stockLevel === "In Stock"
                       ? "text-green-500"
                       : stockLevel === "Low Stock"
                         ? "text-orange-500"
                         : "text-red-500";
+
                   return (
                     <tr key={product.id}>
-                      <td className="py-2">{product.name}</td>
-                      <td className={`py-2 font-semibold ${color}`}>
-                        {stockLevel}
-                      </td>
-                      <td className="py-2">
-                        {new Date(product.createdAt).toDateString()}
+                      <td>{product.name}</td>
+                      <td className={colorClass}>{stockLevel}</td>
+                      <td>
+                        {new Date(product.createdAt).toLocaleDateString()}
                       </td>
                     </tr>
                   );

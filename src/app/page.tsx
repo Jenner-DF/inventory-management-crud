@@ -28,9 +28,6 @@ export default async function HomePage() {
               Get Started <ArrowRight className="w-4 h-4" />
             </Link>
           </Button>
-          <Button variant="outline" size="lg">
-            Learn More
-          </Button>
         </div>
       </section>
 
