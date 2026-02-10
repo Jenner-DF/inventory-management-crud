@@ -15,7 +15,7 @@ export default async function HomePage() {
       <section className="mt-16 max-w-3xl">
         <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 mb-6">
           Simplify Your{" "}
-          <span className="text-primary">Inventory Management</span>
+          <span className="text-primary">Inventory Management System</span>
         </h1>
         <p className="text-gray-600 text-lg sm:text-xl mb-8 leading-relaxed">
           Manage your products, track stock levels, and gain real-time insights
