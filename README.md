@@ -1,7 +1,7 @@
 # Inventory Management Web App
 
 A simple CRUD inventory management web application built with **Next.js**, **TypeScript**, **Prisma**, **Neon (PostgreSQL)**, **shadcn/ui**, and **Zod**.  
-You can add, view, edit, and delete products.
+You can add, view, edit, and delete products. .
 
 ---
 
